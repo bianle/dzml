@@ -5,8 +5,11 @@ urls = (
 	'/','index',
     '/s',app_su
 )
+import monkey
+monkey.patch_all()
+session_root = '/s/session/'
 app = web.application(urls, globals())
-session = web.session.Session(app, web.session.DiskStore('sessions'), initializer={'count': 0})
+session = web.session.Session(app, web.session.DiskStore(session_root))
 class index:
 	def GET(self):
 		render = web.template.render('templates')
