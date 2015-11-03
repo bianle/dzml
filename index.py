@@ -5,7 +5,7 @@ urls = (
 	'/','index',
     '/s',app_su
 )
-import monkey
+from sae.ext.storage import monkey
 monkey.patch_all()
 session_root = '/s/session/'
 app = web.application(urls, globals())
