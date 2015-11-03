@@ -1,14 +1,16 @@
-import web      
+import web
+from shortUrl import app_su
+web.config.debug = False       
 urls = (
-    '/(.*)', 'hello'
+	'/','index',
+    '/s',app_su
 )
 app = web.application(urls, globals())
-
-class hello:        
-    def GET(self, name):
-        if not name: 
-            name = 'World'
-        return 'Hello, ' + name + '!'
+session = web.session.Session(app, web.session.DiskStore('sessions'), initializer={'count': 0})
+class index:
+	def GET(self):
+		render = web.template.render('templates')
+		return render.index()
 
 if __name__ == "__main__":
     app.run()
