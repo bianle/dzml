@@ -1,10 +1,8 @@
-import web
-web.config.debug = False       
+import web      
 urls = (
     '/(.*)', 'hello'
 )
 app = web.application(urls, globals())
-session = web.session.Session(app, web.session.DiskStore('sessions'), initializer={'count': 0})
 
 class hello:        
     def GET(self, name):
