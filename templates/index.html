@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="../static/js/jquery.js"></script>
+
+<style>
+body{
+	
+}
+.main{
+	background-color:#F5F5F5;
+	border:1px solid #ebebeb;
+	width:600px;
+	height:155px;
+	float:left;
+}
+.shorter{
+	margin:25px;
+}
+.ipt{
+	width:420px;
+	height:25px;
+	margin-right:15px;
+	vertical-align:middle;
+	border:1px solid #d9d9d9;
+	border-top:1px solid #c0c0c0;
+	padding:2px 8px 1px 8px;
+	color:#333;
+	font-size:16px;
+	border-radius:1px;
+	-webkit-border-radius:1px;
+	-webkit-user-select:text;
+}
+.btn{
+	background-color:#4D8FFC;
+	border:1px solid #4D8FFC;
+	height:24px;
+	color:#ffffff;
+	border-radius:2px;
+	-webkit-border-radius:2px;
+}
+.arrow{
+	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABBUlEQVR42s2USQ6DMBRDc2FgByzhcFyD4RgMUiojGZkkP7Coqi4qGsx/cf4Qt22b/+bP/QS477tf1/W2fgNDjOmQEMIVyrVuajqc59l3XeenaYrgeAdtHEfTeQTs+94XReHbtr2gdAJYWZY3TU+SBOJDBCCwaZrTDYHQ6rq+NJwmzHUyhxqobpgSwKDhG9WybaOBoRu4poYNsTaPrJXMQeFMoXT62NjDMJxFQiCKEmp4r1q2D+miqqrzqVWH21SenTUleiSFhccNNZfK3bIsUXtYbYW1tk6yD3V3rWBYJMKO47jGMQLqNBBmTYrOOJ5JIGeZ85qb5VDP3jZvri7NHf+7v7+xPw+ZpqkqxNqGAAAAAElFTkSuQmCC) 0px 60px no-repeat;
+	width:20px;
+	height:20px;
+}
+.rst{
+	border:1px dotted #d9d9d9;
+	color:#15c;
+	font-weight:bold;
+	width:420px;
+	height:40px;
+	font-size:21px;
+	line-height:40px;
+	text-align:center;
+
+}
+</style>
+
+</head>
+<body>
+<div style="width:600px;text-align:center;"><img src="/static/logo.png"></img></div>
+<div class="main">
+	
+	<div class="shorter">
+		<div style="color:#222;font-weight:bold;font-size:13px;margin:5px 0 5px 0;">请在此输入网址:</div>
+		<div>
+			<input class="ipt" type="text"  />
+			<input class="btn" type="button" value="截短"  />
+		</div>
+		<br/>
+		<div>
+			
+		</div>
+		<div class="rst" id="rst" style="display:block;" onclick="selectText()"></div>
+		
+	</div>
+	
+</div>
+<div style="float:left;background-color:#FAFAFA;height:155px;display:none;" class="arrow">
+</div>
+<div style="width:600px;text-align:center;margin:10px 0 0 0;font-size:12px;color:#c3c3c3">&copy;2015 dzm.la </div>
+<script>
+	function selectText(){
+		if (document.selection) {
+			var range = document.body.createTextRange();
+			range.moveToElementText(document.getElementById('rst'));
+			range.select();
+		} else if (window.getSelection) {
+			var range = document.createRange();
+			range.selectNode(document.getElementById('rst'));
+			window.getSelection().addRange(range);
+		}
+	}
+</script>
+</body>
+</html>
