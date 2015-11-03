@@ -5,10 +5,13 @@ urls = (
 	'/','index',
     '/s',app_su
 )
-from sae.ext.storage import monkey
-monkey.patch_all()
-session_root = '/s/session/'
 app = web.application(urls, globals())
+try:
+        from sae.ext.storage import monkey
+        monkey.patch_all()
+        session_root = '/s/session/'
+except:
+        session_root = 'session/'
 session = web.session.Session(app, web.session.DiskStore(session_root))
 class index:
 	def GET(self):
