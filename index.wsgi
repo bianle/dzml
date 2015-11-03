@@ -7,6 +7,6 @@ else:
 	# SAE
 	import sae,os,sys
 	root = os.path.dirname(__file__) 
-	sys.path.insert(0, os.path.join(root, 'site-packages')) 
+	sys.path.insert(0, os.path.join(root, 'site-packages/short_url-1.2.1-py2.7.egg/')) 
 	app = app.wsgifunc()
 	application = sae.create_wsgi_app(app)
