@@ -1,8 +1,9 @@
 import web
-from shortUrl import app_su
+from shortUrl import app_su,getUrl
 web.config.debug = False       
 urls = (
 	'/','index',
+         '/(.*)','redirect',
     '/s',app_su
 )
 app = web.application(urls, globals())
@@ -18,5 +19,10 @@ class index:
 		render = web.template.render('templates')
 		return render.index()
 
+class redirect:
+    def GET(self,key):
+        key = key.replace('/','')
+        u = getUrl(key)
+        raise web.seeother(u)
 if __name__ == "__main__":
     app.run()
