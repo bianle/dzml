@@ -7,7 +7,6 @@ urls = ('/', 'index',
         )
 
 app_su = web.application(urls, locals())
-session = web.session.Session(app_su, web.session.DiskStore('sessions'))
 
 class index:
     def GET(self):

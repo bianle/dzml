@@ -6,7 +6,13 @@ urls = (
     '/s',app_su
 )
 app = web.application(urls, globals())
-session = web.session.Session(app, web.session.DiskStore('sessions'), initializer={'count': 0})
+try:
+        from sae.ext.storage import monkey
+        monkey.patch_all()
+        session_root = '/s/session/'
+except:
+        session_root = 'session/'
+session = web.session.Session(app, web.session.DiskStore(session_root))
 class index:
 	def GET(self):
 		render = web.template.render('templates')
