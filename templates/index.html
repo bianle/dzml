@@ -96,6 +96,14 @@ body{
 
 	(function(jj){
 	jj('#cutBtn').click(function(){
+	cut();
+	});
+	jj("#recoverBtn").click(function(){
+	recover();
+	});
+
+	function cut(){
+	jj('#cutBtn').unbind('click');
 	lurl = jj('#longUrl').val();
 	jj.ajax({
 	url:'/s/url/',
@@ -104,11 +112,15 @@ body{
 	dataType:'text',
 	success:function(data){
 	jj('#rst').html('http://dzm.la/'+data);
+	jj('#cutBtn').bind('click',cut);
 	}
 	});
-	});
-	jj("#recoverBtn").click(function(){
+	}
+
+	function recover(){
+	jj("#recoverBtn").unbind('click');
 	var key = jj('#longUrl').val().replace(/\//g,'').slice(-5);
+	
 	jj.ajax({
 	url:'/s/url/'+key,
 	data:{},
@@ -116,9 +128,12 @@ body{
 	dataType:'text',
 	success:function(data){
 	jj('#rst').html(data);
+	jj("#recoverBtn").bind('click',recover);
 	}
 	});
-	});
+	
+	}
+	
 	})(jQuery)
 	
 </script>
