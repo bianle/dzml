@@ -22,9 +22,10 @@ class url:
         return 'dlt'
     ## read
     def GET(self,key):
-        key = 'jy7yj'
         pk = short_url.decode_url(key)
-        return pk
+        rs = Url.find(what='url',where='id=$pk',vars=locals())
+        rcd = rs[0]
+        return rcd.url
     ## update
     def PUT(self,key):
         
@@ -35,8 +36,6 @@ def addUrl(param):
     u = Url(url=url)
     k = u.save()
     rst = short_url.encode_url(k)
-    print rst
-    rst =  url+' --> '+'http://2le.me/'+ rst 
     print rst
     return rst
 def updateUrl(param):

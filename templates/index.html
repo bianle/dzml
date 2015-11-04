@@ -63,10 +63,11 @@ body{
 <div class="main">
 	
 	<div class="shorter">
-		<div style="color:#222;font-weight:bold;font-size:13px;margin:5px 0 5px 0;">请在此输入网址:</div>
+		<div style="color:#222;font-weight:normal;font-size:21px;margin:5px 0 5px 0;">☟</div>
 		<div>
-			<input class="ipt" type="text"  />
-			<input class="btn" type="button" value="截短"  />
+			<input class="ipt" id="longUrl" type="text"  />
+			<input class="btn" id='cutBtn' type="button" value="->||<-"  />
+			<input class="btn" id="recoverBtn" type="button" value="|<---->|"/>
 		</div>
 		<br/>
 		<div>
@@ -92,6 +93,34 @@ body{
 			window.getSelection().addRange(range);
 		}
 	}
+
+	(function(jj){
+	jj('#cutBtn').click(function(){
+	lurl = jj('#longUrl').val();
+	jj.ajax({
+	url:'/s/url/',
+	data:{u:lurl},
+	type:'post',
+	dataType:'text',
+	success:function(data){
+	jj('#rst').html('http://dzm.la/'+data);
+	}
+	});
+	});
+	jj("#recoverBtn").click(function(){
+	var key = jj('#longUrl').val().replace(/\//g,'').slice(-5);
+	jj.ajax({
+	url:'/s/url/'+key,
+	data:{},
+	type:'get',
+	dataType:'text',
+	success:function(data){
+	jj('#rst').html(data);
+	}
+	});
+	});
+	})(jQuery)
+	
 </script>
 </body>
 </html>
