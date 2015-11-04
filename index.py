@@ -3,8 +3,9 @@ from shortUrl import app_su,getUrl
 web.config.debug = False       
 urls = (
 	'/','index',
-         '/(.*)','redirect',
-    '/s',app_su
+        '/s',app_su,
+         '/(.*)','redirect'
+    
 )
 app = web.application(urls, globals())
 try:
