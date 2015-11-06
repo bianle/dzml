@@ -1,6 +1,6 @@
 import web
 from shortUrl import app_su,getUrl
-#web.config.debug = False       
+web.config.debug = False       
 urls = (
 	'/','index',
         '/s',app_su,
