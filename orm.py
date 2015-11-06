@@ -48,8 +48,6 @@ class Model(dict):
         self[key] = value
     
     def modify(self,**kwargs):
-        print kwargs
-        print '==============================='
         params = copy(self)
         try:
             params['where'] = kwargs['where']
@@ -106,52 +104,7 @@ class Url(Model):
     __table__ = 'su_url'
     id = IntegerField('id')
     url = StringField('url')
-     
-class Room(Model):
-    ''
-    __table__ = 'po_room'
-    id = IntegerField('id')
-    owner = StringField('owner')
-    no = StringField('no')
-    name = StringField('name')
-    size_max = StringField('size_max')
-    size_curr = StringField('size_curr')
-    status = StringField('status')
-
-class Player(Model):
-    ''
-    __table__ = 'po_player'
-    id = IntegerField('id')
-    openid = StringField('openid')
-    name = StringField('name')
-    head_img = StringField('head_img') 
-
-class  RoomRelPlayer(Model): 
-    ''
-    __table__ = 'po_room_rel_player'
-    id = IntegerField('id')
-    room_no = StringField('room_no')
-    player_id = StringField('player_id')
-    turn = StringField('turn')
-
-class Turn(Model):
-    ''
-    __table__ = 'po_turn'
-    id = IntegerField('id')
-    room_no = StringField('room_no')
-    turn_no = StringField('turn_no')
-    owner = StringField('owner')
-    owner_next = StringField('owner_next')
-    card_left = StringField('card_left')
-    card_pool = StringField('card_pool')
-
-class TurnRelCard(Model):
-    ''
-    __table__ = 'po_turn_rel_card'
-    id = IntegerField('id')
-    turn_id = StringField('turn_id')
-    card_hand = StringField('card_hand')
-    player_id = StringField('player_id')
+    
     
 if __name__ == '__main__':
 #     r = Room(id = 1,no=2)

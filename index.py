@@ -8,6 +8,7 @@ urls = (
     
 )
 app = web.application(urls, globals())
+'''
 try:
         from sae.ext.storage import monkey
         monkey.patch_all()
@@ -15,6 +16,7 @@ try:
 except:
         session_root = 'session/'
 session = web.session.Session(app, web.session.DiskStore(session_root))
+'''
 class index:
 	def GET(self):
 		render = web.template.render('templates')
