@@ -26,6 +26,8 @@ class redirect:
     def GET(self,key):
         key = key.replace('/','')
         u = getUrl(key)
+		if u.find('http://')==-1:
+			u='http://'+u
         raise web.seeother(u)
 if __name__ == "__main__":
     app.run()
