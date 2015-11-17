@@ -51,6 +51,13 @@ body{
 .btn{
 	height:30px;
 }
+.rst{
+	font-size:30px;
+	border:1px dotted #F0F0F0;
+	color:#F0F0F0;
+	width:420px;
+	margin:0 auto;
+}
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -74,8 +81,8 @@ body{
 		<div>
 			
 		</div>
-		<div class="rst" id="rst" style="display:block;" onclick="selectText()"></div>
 		
+		<div class="rst" id="rst" style="display:none;" onclick="selectText()"></div>
 	</div>
 	
 </div>
@@ -112,6 +119,7 @@ body{
 	dataType:'text',
 	success:function(data){
 	jj('#rst').html('http://dzm.la/'+data);
+	jj('#rst').show();
 	jj('#cutBtn').bind('click',cut);
 	}
 	});
