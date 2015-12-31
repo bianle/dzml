@@ -5,7 +5,12 @@
 
 <style>
 *{
-	font-family:Berlin Sans FB
+	/*font-family:Berlin Sans FB;*/
+	font-family: "Open Sans", sans-serif
+}
+body{
+
+	margin:0;
 }
 bbody{
 	width:100%;
@@ -45,11 +50,16 @@ bbody{
 }
 .ipt{
 	height:30px;
-	width:300px;
-	
+	width:360px;
+	border: 1px solid #BFC8CD;
 }
 .btn{
 	height:30px;
+	border: 1px solid #BFC8CD;
+	background-color: #ffffff;
+	border-radius: 3px;
+	color:#BFC8CD;
+	box-sizing:border-box;
 }
 .rst{
 	font-size:30px;
@@ -58,23 +68,44 @@ bbody{
 	width:358px;
 	margin:0 auto;
 }
+.head{
+
+	text-align: center;
+	background-color:#F5F8FA;
+	padding: 50px 0 10px 0;
+}
+.footer{
+	color:#BBC7CC;text-align:center;margin:10px 0 0 0;font-size:16px;
+	position: absolute;
+	bottom: 5px;
+	text-align: center;
+	width: 100%;
+}
+.footer a{
+	text-decoration: none;
+	
+}
+.footer a:hover{
+	text-decoration:underline;
+}
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div class="main" style="height:500px;">
+<div class="head">
+	<div style="color:#353636;;font-size:5rem;font-weight:700;margin:0px 0 5px 0;"><a>DZM.LA</a></div>
+		<div style=";font-size:18px;color:#7A7C7D">Make your url shorter!</div>
+</div>	
+<div class="main" style="min-height:200px;max-height:400px;">
 	
 	<div class="shorter" style="text-align:center;margin:auto;">
-		<div style="color:#222;font-weight:bold;font-size:50px;margin:50px 0 5px 0;"><a>DZM.LA</a>&nbsp;</div>
-		<div style=";font-size:18px;">~ Make your url shorter! ~</div>
+		
 		<div style="width:100%;margin:100px 0 20px 0;padding:0px;text-align:center;">
-			<span style="font-size:30px;">☞</span>
+			<span style="font-size:30px;"></span>
 			<input class="ipt"  id="longUrl" type="text"  />
-			<input class="btn" id='cutBtn' type="button" value="->||<-"  />
-			<input class="btn" id="recoverBtn" type="button" value="|<---->|"/>
-			
-			
-			
+
+			<input class="btn" id='cutBtn' type="button" value=">||<"  />
+			<input class="btn" id="recoverBtn" type="button" value="|<>|"/>
 			
 		</div>
 		<br/>
@@ -87,7 +118,7 @@ bbody{
 	
 </div>
 
-<div style="text-align:center;margin:10px 0 0 0;font-size:16px;">&copy;2015 dzm.la <a href="https://github.com/bianle" target="_blank">@bianle</a></div>
+<div class="footer">&copy;2015 dzm.la <a style="font-weight:bold;color:#BBC7CC;" href="https://github.com/bianle" target="_blank">@bianle</a></div>
 <script>
 	function selectText(){
 		if (document.selection) {
