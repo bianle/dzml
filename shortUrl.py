@@ -30,8 +30,13 @@ class url:
 def addUrl(param):
     print 'addUrl'
     url = param.u
-    u = Url(url=url)
-    k = u.save()
+    hs = hash(url)
+    rst = Url.find(what='id',where='hash='+hs)
+    try:
+        k = rst[0].id
+    except:
+        u = Url(url=url)
+        k = u.save()
     rst = short_url.encode_url(k)
     print rst
     return rst
