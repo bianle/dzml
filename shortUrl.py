@@ -31,7 +31,7 @@ def addUrl(param):
     print 'addUrl'
     url = param.u
     hs = hash(url)
-    rst = Url.find(what='id',where='hash='+hs)
+    rst = Url.find(what='id',where='hash='+str(hs))
     try:
         k = rst[0].id
     except:
