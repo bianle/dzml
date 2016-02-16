@@ -35,7 +35,7 @@ def addUrl(param):
     try:
         k = rst[0].id
     except:
-        u = Url(url=url)
+        u = Url(url=url,hash=hs)
         k = u.save()
     rst = short_url.encode_url(k)
     print rst

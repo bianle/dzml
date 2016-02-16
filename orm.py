@@ -104,6 +104,7 @@ class Url(Model):
     __table__ = 'su_url'
     id = IntegerField('id')
     url = StringField('url')
+    hash = StringField('hash')
     
     
 if __name__ == '__main__':
