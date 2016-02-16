@@ -1,0 +1,15 @@
+{
+  "manifest_version":2,
+  "name": "DZMLA",
+  "version": "1.0",
+  "description": "Make Your Url Shorter",
+  "page_action": {
+    "default_icon": "icon.png" ,
+    "default_title": "短怎么啦",
+    "default_popup": "popup.html"
+  },
+  "permissions": [ "tabs", "contextMenus", "http://*/*", "https://*/*", "storage", "unlimitedStorage", "clipboardWrite","declarativeContent" ],
+  "background":{
+    "scripts":["background.js"]
+  }
+}
