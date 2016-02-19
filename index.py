@@ -4,7 +4,8 @@ web.config.debug = False
 urls = (
 	'/','index',
         '/s',app_su,
-         '/(.*)','redirect'
+         '/(.*)','redirect',
+        '/(.*).html','staticHtml'
     
 )
 app = web.application(urls, globals())
@@ -29,5 +30,14 @@ class redirect:
 	if u.find('http://')==-1 and u.find("https://")==-1:
 		u='http://'+u
         raise web.seeother(u)
+
+class staticHtml:
+	def GET(self,key):
+		print key
+
+		render = web.template.render('templates')
+		mtd = getattr(render,key)
+		return mtd()
+
 if __name__ == "__main__":
     app.run()
