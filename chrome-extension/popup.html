@@ -2,15 +2,63 @@
 <html>
   <head>
     <title>二维码</title>
-    <script src="http://res.bovod.org/jquery/1.8.0/jquery.min.js"></script>
-    <script src="http://res.bovod.org/jquery.qrcode/0.12.0/jquery.qrcode.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="src/jquery.min.js"></script>
+    <script src="src/jquery.qrcode.min.js"></script>
     <script src="popup.js"></script>
+    <style>
+      .btn{
+     display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+      user-select: none;
+
+      }
+      .btn-success{
+
+      color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+      }
+      .btn-xs{
+      padding: 1px 5px;
+    font-size: 8px;
+    line-height: 1.2;
+    border-radius: 3px;
+      }
+
+    </style>
   </head>
   <body>
     <div id="qrcode" style="width:200px;"></div>
-    <div id="lurl" style="width:200px;"></div>
+    <div id="lurl" style="width:200px;display:none;"></div>
+    <div>
+      <div style="float:left;width:160px;" id="surl">loading...</div>
+      <button href="#" class="btn btn-success btn-xs" id="copyBtn">复制</button>
+    </div>
+
+     <!--
+    <button id="copy-button1" data-clipboard-target="surl" title="点击复制" >复制</button>
+    -->
 
     <a href="javascript:void(0);" id="shareQzone" title="分享到QQ空间"><img src="http://qzonestyle.gtimg.cn/ac/qzone_v5/app/app_share/qz_logo.png" alt="分享到QQ空间" /></a>
-
+    <!--
+    <script src="ZeroClipboard.js"></script>
+    <script src="copy.js"></script>
+    -->
   </body>
 </html>

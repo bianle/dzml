@@ -20,6 +20,11 @@ chrome.windows.getCurrent(function(win){
       };
     }
 
+    cutUrl(url,function(data){
+        url = data;
+        jQuery("#surl").text(url);
+      });
+
     jQuery("#cutBtn").bind("click",function(){
       cutUrl(url,function(data){
         url = data;
@@ -32,10 +37,22 @@ chrome.windows.getCurrent(function(win){
       doShare();
     });
 
+    jQuery("#copyBtn").bind("click",function(){
+      copyTextToClipboard(jQuery("#surl").text());
+    });
+
   });
 });
 
-
+// Copy provided text to the clipboard.
+function copyTextToClipboard(text) {
+    var copyFrom = $('<textarea/>');
+    copyFrom.text(text);
+    $('body').append(copyFrom);
+    copyFrom.select();
+    document.execCommand('copy');
+    copyFrom.remove();
+}
 
 function cutUrl(url,cb){
   jQuery.ajax({
@@ -53,7 +70,7 @@ function cutUrl(url,cb){
 }
 
 function doShare(){
-  cutUrl(jQuery('#lurl').text(),function(u){
+  cutUrl(jQuery('#surl').text(),function(u){
      window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent(u));
   });
   return false;
