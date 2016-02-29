@@ -44,6 +44,13 @@ class addrbook:
                         return "Sorry!duplicate name!"
                 getDb().insert('py_addrbook',name=d.name,mobile=d.mobile,addr=d.addr,qq=d.qq,wechat=d.wechat,other=d.other)
                 return 'Success!Thanks!'
+        def GET(self):
+                d = web.input()
+                name = d.name
+                if name =="":
+                        return ""
+                rst = getDb().query("select * from py_addrbook where name=$name",vars=locals())
+                return package(rst)
 
 class staticHtml:
         def GET(self,key):
@@ -52,6 +59,12 @@ class staticHtml:
 		render = web.template.render('templates')
 		mtd = getattr(render,key)
 		return mtd()
+
+def package(rst):
+    lst = []
+    for rcd in rst:
+        lst.append(rcd)
+    return lst
 
 if __name__ == "__main__":
     app.run()
