@@ -143,7 +143,7 @@ bbody{
 		jQuery("#searchBtn").click(function(){
 			jQuery.ajax({
 				url:"/addrbook",
-				data:{name,jQuery("#name").val()},
+				data:{name:jQuery("#name").val()},
 				type:"GET",
 				dataType:"json",
 				success:function(data){
