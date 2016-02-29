@@ -49,6 +49,7 @@ class addrbook:
                 name = d.name
                 if name =="":
                         return ""
+                from mysql import getDb
                 rst = getDb().query("select * from py_addrbook where name=$name",vars=locals())
                 return package(rst)
 
