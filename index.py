@@ -4,7 +4,7 @@ web.config.debug = False
 urls = (
 	'/','index',
         '/s',app_su,
-        '/addrbook',addrbook,
+        '/addrbook','addrbook',
         '/(.*).html','staticHtml',
         '/(.*)','redirect'
     
