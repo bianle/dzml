@@ -105,7 +105,7 @@ bbody{
 			<tr>
 				<td>姓名：</td>
 				<td><input type="text" name="name" placeholder="边乐"/></td>
-				<td><input type="button" value="查询"/></td>
+				<td><input type="button" id="searchBtn" value="查询"/></td>
 			</tr>
 			<tr>
 				<td>手机：</td>
@@ -137,60 +137,21 @@ bbody{
 
 <div class="footer">&copy;2015 dzm.la <a style="font-weight:bold;color:#BBC7CC;" href="https://github.com/bianle" target="_blank">@bianle</a></div>
 <script>
-	function selectText(){
-		if (document.selection) {
-			var range = document.body.createTextRange();
-			range.moveToElementText(document.getElementById('rst'));
-			range.select();
-		} else if (window.getSelection) {
-			var range = document.createRange();
-			range.selectNode(document.getElementById('rst'));
-			window.getSelection().addRange(range);
-		}
-	}
-
-	(function(jj){
-	jj('#cutBtn').click(function(){
-	cut();
-	});
-	jj("#recoverBtn").click(function(){
-	recover();
-	});
-
-	function cut(){
-	jj('#cutBtn').unbind('click');
-	lurl = jj('#longUrl').val();
-	jj.ajax({
-	url:'/s/url/',
-	data:{u:lurl},
-	type:'post',
-	dataType:'text',
-	success:function(data){
-	jj('#rst').html('http://dzm.la/'+data);
-	jj('#rst').show();
-	jj('#cutBtn').bind('click',cut);
-	}
-	});
-	}
-
-	function recover(){
-	jj("#recoverBtn").unbind('click');
-	var key = jj('#longUrl').val().replace(/\//g,'').slice(-5);
 	
-	jj.ajax({
-	url:'/s/url/'+key,
-	data:{},
-	type:'get',
-	dataType:'text',
-	success:function(data){
-	jj('#rst').html(data);
-	jj('#rst').show();
-	jj("#recoverBtn").bind('click',recover);
-	}
-	});
-	
-	}
-	
+
+	(function(jQuery){
+		jQuery("#searchBtn").click(function(){
+			jQuery.ajax({
+				url:"/addrbook",
+				data:{name,jQuery("#name").val()},
+				type:"GET",
+				dataType:"json",
+				success:function(data){
+					alert(data.qq);
+					alert(data.name)
+				}
+			});
+		});
 	})(jQuery)
 	
 </script>
