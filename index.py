@@ -4,6 +4,7 @@ web.config.debug = False
 urls = (
 	'/','index',
         '/s',app_su,
+        '/addrbook',addrbook,
         '/(.*).html','staticHtml',
         '/(.*)','redirect'
     
@@ -30,6 +31,13 @@ class redirect:
 	if u.find('http://')==-1 and u.find("https://")==-1:
 		u='http://'+u
         raise web.seeother(u)
+
+class addrbook:
+        def POST(self):
+                d = web.input()
+                from mysql import getDB
+                getDB().insert('py_addrbook',name=d.name,mobile=d.mobile,addr=d.addr,qq=d.qq,wechat=d.wechat,other=d.other)
+                return 'success'
 
 class staticHtml:
         def GET(self,key):
