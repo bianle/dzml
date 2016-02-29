@@ -52,8 +52,9 @@ class addrbook:
                 if name =="":
                         return ""
                 from mysql import getDb
+                import json
                 rst = getDb().query("select * from py_addrbook where name=$name",vars=locals())
-                return package(rst)
+                return json.dumps(package(rst))
 
 class staticHtml:
         def GET(self,key):
