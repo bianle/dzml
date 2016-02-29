@@ -109,23 +109,23 @@ bbody{
 			</tr>
 			<tr>
 				<td>手机：</td>
-				<td><input type="text" name="mobile" placeholder="18611694933"/></td>
+				<td><input type="text" id="mobile" name="mobile" placeholder="18611694933"/></td>
 			</tr>
 			<tr>
 				<td>现住址：</td>
-				<td><input type="text" name="addr" placeholder="北京朝阳北苑"/></td>
+				<td><input type="text" id="addr" name="addr" placeholder="北京朝阳北苑"/></td>
 			</tr>
 			<tr>
 				<td>QQ：</td>
-				<td><input type="text" name="qq" placeholder="229371515"/></td>
+				<td><input type="text" id="qq" name="qq" placeholder="229371515"/></td>
 			</tr>
 			<tr>
 				<td>微信：</td>
-				<td><input type="text" name="wechat" placeholder="bianle"/></td>
+				<td><input type="text" id="wechat" name="wechat" placeholder="bianle"/></td>
 			</tr>
 			<tr>
 				<td>其他：</td>
-				<td><textarea type="text" name="other" placeholder="你在他乡还好吗？"></textarea></td>
+				<td><textarea type="text" id="other" name="other" placeholder="你在他乡还好吗？"></textarea></td>
 			</tr>
 		</table>
 		
@@ -147,8 +147,16 @@ bbody{
 				type:"GET",
 				dataType:"json",
 				success:function(data){
-					alert(data.qq);
-					alert(data.name)
+					if(data&&data[0]){
+						data = data[0]
+						jQuery("#name").val(data.name);
+						jQuery("#mobile").val(data.mobile);
+						jQuery("#addr").val(data.addr);
+						jQuery("#qq").val(data.qq);
+						jQuery("#wechat").val(data.wechat);
+						jQuery("#other").text(data.other);
+					}
+					
 				}
 			});
 		});
