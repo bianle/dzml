@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import web
 from shortUrl import app_su,getUrl
 web.config.debug = False       
