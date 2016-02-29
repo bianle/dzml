@@ -64,7 +64,7 @@ class staticHtml:
 def package(rst):
     lst = []
     for rcd in rst:
-        lst.append(rcd)
+        lst.append(dict(rcd))
     return lst
 
 if __name__ == "__main__":
