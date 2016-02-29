@@ -43,7 +43,8 @@ class addrbook:
                 from mysql import getDb
                 rst = getDb().query("select count(*) CT from py_addrbook where name = $name",vars=locals())
                 if rst[0].CT >0:
-                        return "Sorry!duplicate name!"
+                        getDb().update('py_addrbook',name=d.name,mobile=d.mobile,addr=d.addr,qq=d.qq,wechat=d.wechat,other=d.other,where="name=$name",vars=locals())
+                        return "Update Success!Thanks!"
                 getDb().insert('py_addrbook',name=d.name,mobile=d.mobile,addr=d.addr,qq=d.qq,wechat=d.wechat,other=d.other)
                 return 'Success!Thanks!'
         def GET(self):
