@@ -35,9 +35,15 @@ class redirect:
 class addrbook:
         def POST(self):
                 d = web.input()
+                name = d.name
+                if name =="":
+                        return "name is null"
                 from mysql import getDb
+                rst = getDb().query("select count(*) CT from py_addrbook where name = $name",vars=locals())
+                if rst[0].CT >0:
+                        return "Sorry!duplicate name!"
                 getDb().insert('py_addrbook',name=d.name,mobile=d.mobile,addr=d.addr,qq=d.qq,wechat=d.wechat,other=d.other)
-                return 'success'
+                return 'Success!Thanks!'
 
 class staticHtml:
         def GET(self,key):
