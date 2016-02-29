@@ -35,8 +35,8 @@ class redirect:
 class addrbook:
         def POST(self):
                 d = web.input()
-                from mysql import getDB
-                getDB().insert('py_addrbook',name=d.name,mobile=d.mobile,addr=d.addr,qq=d.qq,wechat=d.wechat,other=d.other)
+                from mysql import getDb
+                getDb().insert('py_addrbook',name=d.name,mobile=d.mobile,addr=d.addr,qq=d.qq,wechat=d.wechat,other=d.other)
                 return 'success'
 
 class staticHtml:
