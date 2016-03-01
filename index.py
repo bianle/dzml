@@ -74,7 +74,7 @@ class download:
                 addTxt+=rcd.name+","+rcd.mobile+","+rcd.addr+","+rcd.qq+","+rcd.wechat+","+rcd.other+"\n"
         import StringIO
         s = StringIO.StringIO()
-        s.write(rcd)
+        s.write(addTxt)
         s.seek(0)
         web.header("Content-Type","text/csv;charset=utf-8") #content-type需要根据实际的文件类型来指定
         web.header("Content-Disposition","attachment;filename=0411.csv")
