@@ -100,7 +100,8 @@ bbody{
 <body>
 <div class="head">
 		<div style=";font-size:18px;color:#7A7C7D">04-11通讯录</div>
-		没有你的？<a href="http://dzm.la/addrbook.html">提交</a>给我！我要<a href="http://dzm.la/dl">导出</a>一份来!
+		没有你的？<a href="http://dzm.la/addrbook.html">提交</a>给我！<br/>
+		<span style="color:red;">导出注意：由于微信内置浏览器不支持下载，用微信打开的，请：1.点击右上角三个点->2.在浏览器打开->3.然后</span>点击<a id = "expLnk" href="http://dzm.la/dl">导出</a>!
 </div>	
 <div class="main" style="min-height:200px;max-height:400px;">
   <table border="1">
@@ -129,29 +130,29 @@ $for rcd in rst:
 
 <div class="footer">&copy;2015 dzm.la <a style="font-weight:bold;color:#BBC7CC;" href="https://github.com/bianle" target="_blank">@bianle</a></div>
 <script>
-	
+
+	  function isWeiXin(){
+	    var ua = window.navigator.userAgent.toLowerCase();
+	    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+	        return true;
+	    }else{
+	        return false;
+	    }
+	}
 
 	(function(jQuery){
-		jQuery("#searchBtn").click(function(){
-			jQuery.ajax({
-				url:"/addrbook",
-				data:{name:jQuery("#name").val()},
-				type:"GET",
-				dataType:"json",
-				success:function(data){
-					if(data&&data[0]){
-						data = data[0]
-						jQuery("#name").val(data.name);
-						jQuery("#mobile").val(data.mobile);
-						jQuery("#addr").val(data.addr);
-						jQuery("#qq").val(data.qq);
-						jQuery("#wechat").val(data.wechat);
-						jQuery("#other").text(data.other);
-					}
-					
-				}
-			});
-		});
+		if (isWeiXin()) {
+			jQuery("#expLnk").css("text-decoration","line-through").attr("href","###");
+
+		}else{
+			jQuery("#expLnk").css("text-decoration","underline").attr("href","http://dzm.la/dl");
+		}
+
+
+
+	});
+  
+  
 	})(jQuery)
 	
 </script>
