@@ -7,6 +7,7 @@ urls = (
 	'/','index',
         '/s',app_su,
         '/addrbook','addrbook',
+        '/ab','ab',
         '/(.*).html','staticHtml',
         '/(.*)','redirect'
     
