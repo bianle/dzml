@@ -69,7 +69,7 @@ class download:
     def GET(self):
         from mysql import getDb
         rst = getDb().query("select * from py_addrbook ",vars=locals())
-        addTxt = ''
+        addTxt = u'姓名,手机,现住址,QQ,微信,其他\n'
         for rcd in rst:
                 addTxt+=rcd.name+","+rcd.mobile+","+rcd.addr+","+rcd.qq+","+rcd.wechat+","+rcd.other+"\n"
         import StringIO,codecs
