@@ -72,8 +72,9 @@ class download:
         addTxt = ''
         for rcd in rst:
                 addTxt+=rcd.name+","+rcd.mobile+","+rcd.addr+","+rcd.qq+","+rcd.wechat+","+rcd.other+"\n"
-        import StringIO
+        import StringIO,codecs
         s = StringIO.StringIO()
+        s.write(codecs.BOM_UTF8)
         s.write(addTxt)
         s.seek(0)
         web.header("Content-Type","text/csv;charset=utf-8") #content-type需要根据实际的文件类型来指定
