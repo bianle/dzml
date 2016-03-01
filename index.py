@@ -8,6 +8,7 @@ urls = (
         '/s',app_su,
         '/addrbook','addrbook',
         '/ab','ab',
+        '/dl','download',
         '/(.*).html','staticHtml',
         '/(.*)','redirect'
     
@@ -63,6 +64,27 @@ class ab:
                 rst = getDb().query("select * from py_addrbook ",vars=locals())
                 render = web.template.render('templates')
                 return render.ab(rst)
+
+class download:
+    def GET(self):
+        from mysql import getDb
+        rst = getDb().query("select * from py_addrbook ",vars=locals())
+        addTxt = ''
+        for rcd in rst:
+                addTxt+=rcd.name+","+rcd.mobile+","+rcd.addr+","+rcd.qq+","+rcd.wechat+","+rcd.other+"\n"
+        import StringIO
+        s = StringIO.StringIO()
+        s.write(rcd)
+        s.seek(0)
+        web.header("Content-Type","text/csv;charset=utf-8") #content-type需要根据实际的文件类型来指定
+        web.header("Content-Disposition","attachment;filename=0411.csv")
+        while True:
+            c = s.read(2048)
+            if c:
+                yield c
+            else:
+                break
+        
 class staticHtml:
         def GET(self,key):
 		print key
