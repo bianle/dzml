@@ -1,0 +1,158 @@
+$def with(rst)
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="../static/js/jquery.js"></script>
+
+<style>
+*{
+	/*font-family:Berlin Sans FB;*/
+	font-family: "Open Sans", sans-serif
+}
+body{
+
+	margin:0;
+	font-family: "Open Sans", sans-serif;
+}
+bbody{
+	width:100%;
+      float: left;
+      
+      margin: 0px;
+      
+      -webkit-background-size: 50px 50px;
+      -moz-background-size: 50px 50px;
+      background-size: 50px 50px; /* Controls the size of the stripes */
+      
+      -moz-box-shadow: 1px 1px 8px gray;
+      -webkit-box-shadow: 1px 1px 8px gray;
+      box-shadow: 1px 1px 8px gray;
+	  
+	  background-color: #ac0;
+      background-image: -webkit-gradient(linear, 0 100%, 100% 0,
+                  color-stop(.25, rgba(255, 255, 255, .2)), color-stop(.25, transparent),
+                  color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .2)),
+                  color-stop(.75, rgba(255, 255, 255, .2)), color-stop(.75, transparent),
+                  to(transparent));
+      background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                transparent 75%, transparent);
+      background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                transparent 75%, transparent);
+      background-image: -ms-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                transparent 75%, transparent);
+      background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                transparent 75%, transparent);
+      background-image: linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                transparent 75%, transparent);
+}
+.ipt{
+	height:30px;
+	width:360px;
+	border: 1px solid #BFC8CD;
+	margin-bottom: 5px;
+}
+.btn{
+	height:30px;
+	border: 1px solid #BFC8CD;
+	background-color: #ffffff;
+	border-radius: 3px;
+	color:#BFC8CD;
+	box-sizing:border-box;
+}
+.rst{
+	font-size:30px;
+	border:1px dotted #BFC8CD;
+	background-color:#FFFFF0;
+	color:#7A7C7D;
+	max-width:600px;
+	min-width:400px;
+	margin:0 auto;
+}
+.head{
+
+	text-align: center;
+	background-color:#F5F8FA;
+	padding: 50px 0 10px 0;
+}
+.footer{
+	color:#BBC7CC;text-align:center;margin:10px 0 0 0;font-size:16px;
+	position: absolute;
+	bottom: 5px;
+	text-align: center;
+	width: 100%;
+}
+.footer a{
+	text-decoration: none;
+	
+}
+.footer a:hover{
+	text-decoration:underline;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="head">
+		<div style=";font-size:18px;color:#7A7C7D">04-11通讯录</div>
+		04-11的小伙伴们你们现在在哪里？过的还好吗？填写信息点击提交按钮，到时候在群里共享！有问题qq：18611694933（229371515），上班了！--边乐
+</div>	
+<div class="main" style="min-height:200px;max-height:400px;">
+  <table>
+    <tr>
+      <td>姓名</td>
+      <td>手机</td>
+      <td>QQ</td>
+      <td>微信</td>
+      <td>住址</td>
+      <td>其他</td>
+    </tr>
+$for rcd in rst:
+    <tr>
+      <td>$rcd.NAME</td>
+      <td>$rcd.MOBILE</td>
+      <td>$rcd.QQ</td>
+      <td>$rcd.WECHAT</td>
+      <td>$rcd.ADDR</td>
+      <td>$rcd.OTHER</td>
+    </tr>
+                        
+  </table>
+	
+	
+</div>
+
+<div class="footer">&copy;2015 dzm.la <a style="font-weight:bold;color:#BBC7CC;" href="https://github.com/bianle" target="_blank">@bianle</a></div>
+<script>
+	
+
+	(function(jQuery){
+		jQuery("#searchBtn").click(function(){
+			jQuery.ajax({
+				url:"/addrbook",
+				data:{name:jQuery("#name").val()},
+				type:"GET",
+				dataType:"json",
+				success:function(data){
+					if(data&&data[0]){
+						data = data[0]
+						jQuery("#name").val(data.name);
+						jQuery("#mobile").val(data.mobile);
+						jQuery("#addr").val(data.addr);
+						jQuery("#qq").val(data.qq);
+						jQuery("#wechat").val(data.wechat);
+						jQuery("#other").text(data.other);
+					}
+					
+				}
+			});
+		});
+	})(jQuery)
+	
+</script>
+</body>
+</html>

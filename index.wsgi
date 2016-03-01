@@ -1,6 +1,7 @@
 import os,sys
 root = os.path.dirname(__file__) 
 sys.path.insert(0, os.path.join(root, 'site-packages/short_url-1.2.1-py2.7.egg'))
+sys.path.insert(0, os.path.join(root, 'site-packages/pypinyin-0.11.1-py2.7.egg'))
 
 from index import app
 

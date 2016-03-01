@@ -56,7 +56,12 @@ class addrbook:
                 import json
                 rst = getDb().query("select * from py_addrbook where name=$name",vars=locals())
                 return json.dumps(package(rst))
-
+class ab:
+        def GET(self):
+                from mysql import getDb
+                rst = getDb().query("select * from py_addrbook ",vars=locals())
+                render = web.template.render('templates')
+                return render.ab(rst)
 class staticHtml:
         def GET(self,key):
 		print key
